@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+#wp_favorite .wp_favorite_item{
+	margin: 10px 0;
+	padding-bottom: 5px;
+	border-bottom: dashed #CCCCCC 1px;
+}
+
+#wp_favorite div.last{
+	border-bottom: none;
+}
+
+#wp_favorite .wp_favorite_hd{
+	font-weight:bold;
+	font-size:14px;
+	line-height:25px;
+}
+
+#wp_favorite .wp_favorite_dt{
+	color:#777;
+}
