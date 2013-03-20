@@ -2,7 +2,7 @@
 /** 
 Plugin Name: Network-Favorite
 Plugin URI: http://thobian.info/?page_id=1217
-Version: 1.0
+Version: 1.1
 Author: 晴天打雨伞
 Description: 使用Network-Favorites，可以快速将您看到的网页收藏到自己博客，方便以后阅读，同时还可以将自己收藏的内容分享给网友。
 Author URI: http://thobian.info
@@ -61,10 +61,9 @@ function  load_wp_favorite_css(){
 //前台查看收藏文章
 add_filter('the_content', 'wp_favorite_list', 1);
 function  wp_favorite_list( $content ){
-	if( is_page() ){
+	if( is_page() && preg_match('/\[wp_favorites limit=[\'"](.*)?[\'"] \/\]/i', $content, $wp_favorites) ){
 		global $wpdb;
 		
-		preg_match('/\[wp_favorites limit=[\'"](.*)?[\'"] \/\]/i', $content, $wp_favorites);
 		$limit	= $wp_favorites[1];
 		$page	= isset( $_GET['paged']) && intval($_GET['paged'])>1 ? intval($_GET['paged']) : 1;
 		$offset	= ($page-1)*$limit;
